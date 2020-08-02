@@ -1,0 +1,26 @@
+<table *ngIf='obj.hits !== undefined && obj.hits.length !== 0'>
+    <tr class="table-header">
+        <th>Comments</th>
+        <th>Vote Count</th>
+        <th>UpVote</th>
+        <th>News Details</th>
+    </tr>
+    <tr *ngFor="let row of obj.hits">
+        <!-- <tr> -->
+        <td>{{ row.num_comments }}</td>
+        <td>{{ row.points }}</td>
+        <td><span class="fa fa-caret-up" (click)="upVote(row.objectID)"></span></td>
+        <td>{{ row.title }} <a href="row.url">{{ row.url }}</a> by {{ row.author }} {{ row.diff_time }} <span
+                style="color: blue; cursor: pointer;" (click)="hideRow(row.objectID)">(Hide)</span>
+        </td>
+    </tr>
+</table>
+<div class="buttons">
+    <a class="icon nav-link" [routerLink]="pageNumber!==0?['/'+(pageNumber-1)]:[0]">Previous</a>|
+    <a class="icon nav-link" [routerLink]="pageNumber!==(maxPages-1)?['/'+(pageNumber+1)]:[(maxPages-1)]">Next</a>
+</div>
+<div class="chart-wrapper">
+    <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+        [colors]="lineChartColors" [legend]="true" [chartType]="'line'" [plugins]="[]" height="50px !important">
+    </canvas>
+</div>

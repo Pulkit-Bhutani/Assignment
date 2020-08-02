@@ -1,0 +1,12 @@
+For building and deploying the app:-
+
+1. Pull project from github repository.
+2. Run npm install.
+3. Run ng test to see all tests run fine.
+4. Run ng build --prod for prod build.
+5. Copy contents of dist folder to server.
+6. Configure server to redirect requests for missing files to index.html.
+
+
+
+Refer Documentation: https://angular.io/guide/deployment
