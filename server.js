@@ -1,17 +1,10 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-// ...
-// For all GET requests, send back index.html
-// so that PathLocationStrategy can be used
+app.use(express.static(__dirname + '/dist/Assignment'));
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname + '/dist/Assignment/index.html'));
 });
-// Run the app by serving the static files
-// in the dist directory
-app.use(express.static(__dirname + '/dist/Assignment'));
-// Start the app by listening on the default
-// Heroku port
 const forceSSL = function () {
     return function (req, res, next) {
         if (req.headers['x-forwarded-proto'] !== 'https') {
@@ -22,8 +15,5 @@ const forceSSL = function () {
         next();
     }
 }
-// Instruct the app
-// to use the forceSSL
-// middleware
 app.use(forceSSL());
 app.listen(process.env.PORT || 8080);
