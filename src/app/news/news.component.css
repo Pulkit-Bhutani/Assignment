@@ -23,6 +23,8 @@ th, td, tr {
 
 table {
     border-collapse: collapse;
+    overflow-x: scroll;
+    width: 100%;
 }
 
 .buttons {

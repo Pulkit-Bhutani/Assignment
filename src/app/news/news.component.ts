@@ -93,6 +93,7 @@ export class NewsComponent implements OnInit {
 
     this.lineChartOptions = {
       responsive: true,
+      maintainAspectRatio: false,
       scales: {
         yAxes: [{
           scaleLabel: {
