@@ -1,5 +1,5 @@
-<div style="width: 100%; overflow-x: scroll;">
-    <table *ngIf='obj.hits !== undefined && obj.hits.length !== 0'>
+<div style="width: 100%; overflow-x: scroll;" *ngIf='obj.hits !== undefined && obj.hits.length !== 0'>
+    <table>
         <tr class="table-header">
             <th>Comments</th>
             <th>Vote Count</th>
@@ -17,11 +17,11 @@
         </tr>
     </table>
 </div>
-<div class="buttons">
+<div class="buttons" *ngIf='obj.hits !== undefined && obj.hits.length !== 0'>
     <a class="icon nav-link" [routerLink]="pageNumber!==0?['/'+(pageNumber-1)]:[0]">Previous</a>|
     <a class="icon nav-link" [routerLink]="pageNumber!==(maxPages-1)?['/'+(pageNumber+1)]:[(maxPages-1)]">Next</a>
 </div>
-<div class="chart-wrapper">
+<div class="chart-wrapper" *ngIf="lineChartData !== undefined && lineChartLabels !== undefined">
     <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
         [colors]="lineChartColors" [legend]="true" [chartType]="'line'" [plugins]="[]" height="60px">
     </canvas>
