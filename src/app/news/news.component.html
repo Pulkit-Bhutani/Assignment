@@ -8,11 +8,12 @@
         </tr>
         <tr *ngFor="let row of obj.hits">
             <!-- <tr> -->
-            <td>{{ row.num_comments }}</td>
-            <td>{{ row.points }}</td>
-            <td><span class="fa fa-caret-up" (click)="upVote(row.objectID)"></span></td>
-            <td>{{ row.title }} <a href="row.url">{{ row.url }}</a> by {{ row.author }} {{ row.diff_time }} <span
-                    style="color: blue; cursor: pointer;" (click)="hideRow(row.objectID)">(Hide)</span>
+            <td style="text-align: center;">{{ row.num_comments }}</td>
+            <td style="text-align: center;">{{ row.points }}</td>
+            <td style="text-align: center;"><span class="fa fa-caret-up" (click)="upVote(row.objectID)"></span></td>
+            <td><strong>{{ row.title }} </strong><a href="row.url">{{ row.url }}</a> by <strong>{{ row.author }}
+                </strong>{{ row.diff_time }} <span style="color: blue; cursor: pointer;"
+                    (click)="hideRow(row.objectID)">(Hide)</span>
             </td>
         </tr>
     </table>
@@ -23,6 +24,6 @@
 </div>
 <div class="chart-wrapper" *ngIf="lineChartData !== undefined && lineChartLabels !== undefined">
     <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
-        [colors]="lineChartColors" [legend]="true" [chartType]="'line'" [plugins]="[]" height="60px">
+        [colors]="lineChartColors" [legend]="true" [chartType]="'line'" [plugins]="[]" height="50px">
     </canvas>
 </div>
