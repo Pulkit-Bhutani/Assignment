@@ -36,7 +36,6 @@ export class NewsComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.pageNumber = +params['pageNumber'];
-      console.log(this.key+this.pageNumber);
       let data = this.storageService.retrieve(this.key + this.pageNumber);
       if (data !== undefined) {
         this.init(JSON.parse(data));

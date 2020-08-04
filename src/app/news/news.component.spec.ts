@@ -72,7 +72,6 @@ describe('NewsComponent', () => {
 
   it('upVote', () => {
     component.obj = obj;
-    console.log(obj);
     component.upVote('11116274');
     expect(component.obj.hits.find((row) => row.objectID === '11116274').points).toEqual(5772)
   });
