@@ -4,6 +4,11 @@
     color: white;
 }
 
+.chart-wrapper {
+    overflow-x: scroll;
+    width: 100%;
+}
+
 canvas {
     border-bottom: 2px solid rgba(255, 68, 0, 0.938);
     border-top: 2px solid rgba(255, 68, 0, 0.938);
