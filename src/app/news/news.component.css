@@ -5,7 +5,6 @@
 }
 
 .chart-wrapper {
-    overflow-x: scroll;
     width: 100% !important;
 }
 
@@ -13,8 +12,7 @@ canvas {
     border-bottom: 2px solid rgba(255, 68, 0, 0.938);
     border-top: 2px solid rgba(255, 68, 0, 0.938);
     margin-top: 10px;
-    overflow-x: scroll;
-    width: 100% !important;
+    height: auto;
 }
 
 th, td, tr {
@@ -38,4 +36,21 @@ table {
     color: rgba(255, 68, 0, 0.938);
     padding-right: 4px;
     padding-left: 4px;
+}
+
+@media (max-width: 660px) {
+    #table {
+        width: 100%;
+        overflow-x: scroll;
+    }
+    .chart {
+        width: 100% !important;
+        overflow-x: scroll;
+    }
+    .chart-wrapper {
+        width: 150% !important;
+    }
+    canvas {
+        height: auto;
+    }
 }
