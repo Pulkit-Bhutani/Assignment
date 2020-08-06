@@ -35,7 +35,7 @@ export class NewsComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.pageNumber = +params['pageNumber'];
+      this.pageNumber = +params['pageNumber'];  
       let data = this.storageService.retrieve(this.key + this.pageNumber);
       if (data !== undefined) {
         this.init(JSON.parse(data));
@@ -49,12 +49,13 @@ export class NewsComponent implements OnInit {
 
   upVote(objectID: string) {
     this.obj.hits.find((row) => row.objectID === objectID).points = this.obj.hits.find((row) => row.objectID === objectID).points + 1;
+    this.lineChartData[0].data[this.lineChartLabels.indexOf(objectID)] = +this.lineChartData[0].data[this.lineChartLabels.indexOf(objectID)] + 1;
     this.storageService.store(this.key + this.pageNumber, JSON.stringify(this.obj));
+    this.chart();
   }
 
   hideRow(objectID: string) {
     this.obj.hits = this.obj.hits.filter((rows) => rows.objectID !== objectID);
-    //let index = this.lineChartLabels.indexOf(objectID);
     this.lineChartData = this.lineChartData.filter((data) => data.label !== objectID);
     this.lineChartLabels = this.lineChartLabels.filter((label) => label !== objectID);
     this.storageService.store(this.key + this.pageNumber, JSON.stringify(this.obj));
@@ -84,6 +85,11 @@ export class NewsComponent implements OnInit {
     });
     this.obj = obj as Obj;
     this.storageService.store(this.key + this.pageNumber, JSON.stringify(this.obj));
+
+    this.chart();
+  }
+
+  chart() {
     this.lineChartData = [
       { data: this.data },
     ];
