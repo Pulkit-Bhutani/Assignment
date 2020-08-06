@@ -9,7 +9,7 @@
         <tr *ngFor="let row of obj.hits">
             <td style="text-align: center;">{{ row.num_comments }}</td>
             <td style="text-align: center;">{{ row.points }}</td>
-            <td style="text-align: center;"><span class="fa fa-caret-up" (click)="upVote(row.objectID)"></span></td>
+            <td style="text-align: center;"><span class="fa fa-caret-up" style="cursor: pointer; color: rgb(126, 120, 120);" (click)="upVote(row.objectID)"></span></td>
             <td><strong>{{ row.title }} </strong><a href="row.url">{{ row.url }}</a> by <strong>{{ row.author }}
                 </strong>{{ row.diff_time }} <span style="color: blue; cursor: pointer;"
                     (click)="hideRow(row.objectID)">(Hide)</span>
